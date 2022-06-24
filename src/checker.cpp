@@ -10,18 +10,23 @@
 #include <fstream>
 #include <ctype.h> // using for ::isspace
 #include <algorithm> // using for std::remove_if()
-#define VERSION "v 1.1.0 Beta"
+#define VERSION "v 1.3.0 Beta"
 #define AUTHOR "Yuz.Chen(Yuzhuang Chen)"
 
 /* if under windows system, will include <direct.h> from libray
    else under unix system, will include <unistd.h> from libray 
    PATH_SIGN using for */
 #ifdef WINDOWS
-    #include <direct.h>
+    #include <direct.h> // _getcwd()
+    #define getCurrentDri _getcwd()
+    #include "../Dependency/wingetopt/src/getopt.h" // getopt()
     #define PATH_SIGN "\\"
+    #define HOME_PATH "PATH"
 #else
-    #include <unistd.h>
+    #include <unistd.h> // getcwd() getopt()
+    #define getCurrentDri getcwd
     #define PATH_SIGN "/"
+    #define HOME_PATH "HOME"
 #endif
 
 // open input file and check if input file is found
@@ -167,7 +172,7 @@ void getCurrentDriectory(std::string& resultPath) {
 
 // check if path starting with '~'
 bool startWithHomeDriectory(const std::string& path) {
-    std::string homePath = getenv("HOME"); // env = Environment Variables
+    std::string homePath = getenv(HOME_PATH); // env = Environment Variables
     if (path.find(homePath) != std::string::npos) {
         return true;
     }
@@ -197,7 +202,7 @@ void printMan() {
 }
 
 void printVersion() {
-    std::cout << "ch" << VERSION << "\n\n" 
+    std::cout << "ch " << VERSION << "\n\n" 
               << "Author: " << AUTHOR 
               << std::endl;
 }
