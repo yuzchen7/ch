@@ -47,6 +47,12 @@ Clone or download this project or just the bin directory, and set the bin direct
             result is -> true : all line Match
         ```
 
+## DEPENDENCY
+## wingetopt:
+- ### author: alex85k
+- ### link of dependency : https://github.com/alex85k/wingetopt
+- Window version of  getopt(...)
+
 ## Version
-- #### v 1.1.0 Beta
+- #### v 1.3.0 Beta
 - #### Yuz.chen (Yuzhuang Chen)
