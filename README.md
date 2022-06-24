@@ -48,9 +48,9 @@ Clone or download this project or just the bin directory, and set the bin direct
         ```
 
 ## DEPENDENCY
-## wingetopt:
-- ### author: alex85k
-- ### link of dependency : https://github.com/alex85k/wingetopt
+### wingetopt:
+- #### author: alex85k
+- #### link of dependency : https://github.com/alex85k/wingetopt
 - Window version of  getopt(...)
 
 ## Version
