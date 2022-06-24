@@ -31,11 +31,11 @@
 
 // open input file and check if input file is found
 void openInputFile(std::ifstream& inputFile, std::string& fileName);
-//remove all the space from the string
+// remove all the space from the string
 void removeSpace(std::string& str);
-//close both input file stream
+// close both input file stream
 void inputFileStreamClose(std::ifstream& expectedIN, std::ifstream& myoutputIN);
-//getting the driectory with assgin to the parameter resultPath
+// getting the driectory with assgin to the parameter resultPath
 void getCurrentDriectory(std::string& resultPath);
 // check if path starting with the home dri
 bool startWithHomeDriectory(const std::string& path);
@@ -158,12 +158,12 @@ void inputFileStreamClose(std::ifstream& expectedIN, std::ifstream& myoutputIN) 
     myoutputIN.close();
 }
 
-//remove all the space from the string
+// remove all the space from the string
 void removeSpace(std::string& str) {
     str.erase(std::remove_if(str.begin(), str.end(), ::isspace), str.end());
 }
 
-//getting the driectory with assgin to the parameter resultPath
+// getting the driectory with assgin to the parameter resultPath
 void getCurrentDriectory(std::string& resultPath) {
     char result[PATH_MAX]; //PATH_MAX the max bytes for storage the path name
     getcwd(result, sizeof(result)); //cwd = Current Working Dri
