@@ -14,11 +14,13 @@
 #define AUTHOR "Yuz.Chen(Yuzhuang Chen)"
 
 /* if under windows system, will include <direct.h> from libray
-   else under unix system, will include <unistd.h> from libray 
-   PATH_SIGN using for */
+   and dependency source, else under unix system, will
+   include <unistd.h> from libray. PATH_SIGN use for modify 
+   the path. HOME_PATH use in getenv function to get the home
+   path. */
 #ifdef _WIN32
     #include <direct.h> // _getcwd()
-    #define getCurrentDri _getcwd()
+    #define getCurrentDri _getcwd
     #include "../Dependency/wingetopt/src/getopt.h" // getopt()
     #define PATH_SIGN "\\"
     #define HOME_PATH "PATH"
@@ -121,7 +123,7 @@ int CoreChecker(int argc, char **argv) {
         counterLine++;
     }
 
-    // if one of the file is not reach the end, then reast are error
+    // if one of the file is not reach the end, then rest are error
     if (!expectedIN.eof() || !myoutputIN.eof()) {
         std::cout << "false : line : " << counterLine << " and keep on" << std::endl;
         inputFileStreamClose(expectedIN, myoutputIN);
@@ -133,7 +135,7 @@ int CoreChecker(int argc, char **argv) {
     return 0;
 }
 
-// open input file and check if input file is found
+// open input file wiht modify path and check if input file is found
 void openInputFile(std::ifstream& inputFile, std::string& fileName) {
     bool flagHomeDri = startWithHomeDriectory(fileName);
 
@@ -152,7 +154,7 @@ void openInputFile(std::ifstream& inputFile, std::string& fileName) {
     inputFile.open(fullPath, std::ios::in);
 }
 
-//close both input file stream
+// close both input file stream
 void inputFileStreamClose(std::ifstream& expectedIN, std::ifstream& myoutputIN) {
     expectedIN.close();
     myoutputIN.close();
@@ -170,7 +172,7 @@ void getCurrentDriectory(std::string& resultPath) {
     resultPath = std::string(result);
 }
 
-// check if path starting with '~'
+// check if path starting with HOME_PATH'~'
 bool startWithHomeDriectory(const std::string& path) {
     std::string homePath = getenv(HOME_PATH); // env = Environment Variables
     if (path.find(homePath) != std::string::npos) {
