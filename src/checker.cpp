@@ -16,7 +16,7 @@
 /* if under windows system, will include <direct.h> from libray
    else under unix system, will include <unistd.h> from libray 
    PATH_SIGN using for */
-#ifdef WINDOWS
+#ifdef _WIN32
     #include <direct.h> // _getcwd()
     #define getCurrentDri _getcwd()
     #include "../Dependency/wingetopt/src/getopt.h" // getopt()
