@@ -15,9 +15,14 @@ Clone or download this project or just the bin directory, and set the bin direct
 
         # display the version of Checker
         ch -v
+
+        # compare the two file without(Ignore) the space
+        ch -s file1.txt file2.txt
+
+        # compare the two file without(Ignore) the Substring
+        ch -c 'Substring' file1.txt file2.txt
     ```
     - #### NOTE: if enter file is more then 2, it will compare the last two enter file
-    - #### NOTE: A command operation can have at most one operation parameter at a time. if more then 1 operation parameter, the first parameter is considered as the operation parameter of the current command
 
 - ### result with compare two file:
     - #### without any arguments, display:
