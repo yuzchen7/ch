@@ -64,8 +64,8 @@ int CoreChecker(int argc, char **argv, bool isIgnoreSpace, const std::string& su
 
 
 int main(int argc, char *argv[]) {
-    time_t start, end;
-    time(&start);
+    // time_t start, end;
+    // time(&start);
 
     std::string lastArgument = std::string(argv[argc - 1]);
     if (argc <= 1 || (argc >= 3 && lastArgument.find("-") != std::string::npos)) {
@@ -116,8 +116,8 @@ int main(int argc, char *argv[]) {
 
     int result = CoreChecker(argc, argv, isIgnoreSpace, subStringIgnore);
 
-    time(&end);
-    std::cout << "run with: " << difftime(end, start) << " seconds" << std::endl;
+    // time(&end);
+    // std::cout << "run with: " << difftime(end, start) << " seconds" << std::endl;
 
     return result;
 }
@@ -255,7 +255,6 @@ void printMan() {
               << "DESCRIPTION\n"
               << "\tIn the first form, the ch tool will check whether the contents of the two files, File_Path1 and File_Path2, are the same. The default comparison process excludes all spaces that appear in the content, but not the newline character '\\n'.\n\n"
               << "\tIn its second form, the ch tool's operation will operate on the command or on the path depending on the operation parameters.\n\n"
-              << "\t\tNOTE: A command operation can have at most one operation parameter at a time. if more then 1 operation parameter, the first parameter is considered as the operation parameter of the current command\n\n"
               << "\tThe following options are available:\n\n"
               << "\t-v\tDisplay the version of ch command\n\n"
               << "\t-m\tDisplay the help manu of the command; more info, @see README\n\n" 
