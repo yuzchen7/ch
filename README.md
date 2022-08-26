@@ -59,5 +59,5 @@ Clone or download this project or just the bin directory, and set the bin direct
 - Window version of  getopt(...)
 
 ## Version
-- #### v 1.3.0 Beta
+- #### v 1.4.0 Beta
 - #### Yuz.chen (Yuzhuang Chen)
