@@ -90,7 +90,7 @@ int main(int argc, char *argv[]) {
             case '?':
                 std::cout << "having Unidentifiable operation parameter." << std::endl;
                 printUsage();
-                return 1;
+                return 126; // command Unavailable
             }
             return 0;
         }
@@ -109,7 +109,7 @@ int main(int argc, char *argv[]) {
             case '?':
                 std::cout << "having Unidentifiable operation parameter." << std::endl;
                 printUsage();
-                return 1;
+                return 126; // command Unavailable
             }
         }
     }
@@ -146,6 +146,7 @@ int CoreChecker(int argc, char **argv, bool isIgnoreSpace, const std::string& su
     // prepar variable for loop 
     std::string expectedInput, myOutputInput;
     int counterLine = 1;
+    bool subStringIgnoreFlag = subStringIgnore.empty();
     // check each line in both file, to see if is correct
     while (!expectedIN.eof() && !myoutputIN.eof()) {
         getline(expectedIN, expectedInput);
@@ -156,10 +157,8 @@ int CoreChecker(int argc, char **argv, bool isIgnoreSpace, const std::string& su
             removeSpace(myOutputInput);
         }
 
-        if (!subStringIgnore.empty()) {
-            if (expectedInput.find(subStringIgnore) == myOutputInput.find(subStringIgnore)) {
-                continue;
-            } else {
+        if (!subStringIgnoreFlag) {
+            if (expectedInput.find(subStringIgnore) != myOutputInput.find(subStringIgnore)) {
                 removeSubString(expectedInput, subStringIgnore);
                 removeSubString(myOutputInput, subStringIgnore);
             }
